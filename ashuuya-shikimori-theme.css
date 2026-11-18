@@ -8,49 +8,42 @@
 
 
 /* ==========================================================================
+   [НАСТРОЙКИ ПОЛЬЗОВАТЕЛЯ]
+   Ниже — значения по умолчанию: тема выглядит так, как задумано, и ничего
+   менять не обязательно. Чтобы поставить своё оформление, добавьте в поле
+   пользовательского CSS после строки @import только нужные вам строки:
+
+     html:root {
+       --ash-font: "Inter", sans-serif;
+       --ash-logo: url("https://example.com/my-logo.png");
+     }
+
+   Доступные переменные:
+     --ash-font          шрифт темы;
+     --ash-logo          картинка логотипа в верхнем меню;
+     --ash-bg-image      фон страницы;
+     --ash-ach-bg        фон раздела достижений;
+     --ash-nav-position  sticky — меню закреплено при прокрутке,
+                         static — меню уезжает вместе со страницей.
+   ========================================================================== */
+
+html:root {
+  --ash-font: "Comfortaa", sans-serif;
+  --ash-logo: url(https://i.ibb.co/cyysCr1/shiki-logo-white-07-06-22.png);
+  --ash-bg-image: url(https://i.ibb.co/zbVdH6h/shiki-bg.jpg);
+  --ash-ach-bg: url(https://i.ibb.co/QX6hgbQ/image.png);
+  --ash-nav-position: sticky;
+}
+
+
+/* ==========================================================================
    [РАЗДЕЛ 1. БАЗОВЫЙ ДИЗАЙН ED-MAIN (ЧАСТЬ 1)]
    Источник: main_code_1.css
    ========================================================================== */
 
-@font-face {
-    font-family: "Comfortaa";
-    font-style: normal;
-    font-weight: 400;
-    src: local("Comfortaa Regular"), local("Comfortaa-Regular"),
-    url(https://fonts.gstatic.com/s/comfortaa/v10/-DackuIFgo7Hfy3rR14C3xJtnKITppOI_IvcXXDNrsc.woff2) format("woff2");
-    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-
-@font-face {
-    font-family: "Comfortaa";
-    font-style: normal;
-    font-weight: 400;
-    src: local("Comfortaa Regular"), local("Comfortaa-Regular"),
-    url(https://fonts.gstatic.com/s/comfortaa/v10/qLBu5CQmSMt1H43OiWJ77VtXRa8TVwTICgirnJhmVJw.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
-}
-
-@font-face {
-    font-family: "Comfortaa";
-    font-style: normal;
-    font-weight: 700;
-    src: local("Comfortaa Bold"), local("Comfortaa-Bold"),
-    url(https://fonts.gstatic.com/s/comfortaa/v10/fND5XPYKrF2tQDwwfWZJI5X5f-9o1vgP2EXwfjgl7AY.woff2) format("woff2");
-    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-
-@font-face {
-    font-family: "Comfortaa";
-    font-style: normal;
-    font-weight: 700;
-    src: local("Comfortaa Bold"), local("Comfortaa-Bold"),
-    url(https://fonts.gstatic.com/s/comfortaa/v10/fND5XPYKrF2tQDwwfWZJI-gdm0LZdjqr5-oayXSOefg.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
-}
-
 :root {
-    --font-family: "Comfortaa", sans-serif !important;
-    --font-main: "Comfortaa", sans-serif !important;
+    font-family: var(--ash-font) !important;
+    --font-main: var(--ash-font) !important;
     --font-alt: var(--font-family);
     --font-alt-text-letter-spacing: normal;
 }
@@ -115,7 +108,7 @@ body:after {
 }
 
 .l-top_menu-v2 {
-    position: sticky;
+    position: var(--ash-nav-position, sticky);
     top: 0;
 }
 
@@ -210,7 +203,7 @@ header.head .misc {
 * .c-brief header.head h1 {
     border-bottom: none;
     color: rgba(var(--white-color), 1) !important;
-    font-family: Comfortaa, sans-serif;
+    font-family: var(--ash-font);
     text-shadow: 2px -2px 0 rgba(var(--nick-cover), 1), -2px 2px 0 rgba(var(--nick-cover), 1),
     -2px -2px 0 rgba(var(--nick-cover), 1), 2px 2px 0 rgba(var(--nick-cover), 1),
     0 -2px 0 rgba(var(--nick-cover), 1), 0 2px 0 rgba(var(--nick-cover), 1),
@@ -225,7 +218,7 @@ header.head h2,
 header.head h1 {
     border-bottom: none;
     color: rgba(var(--white-color), 1) !important;
-    font-family: "Comfortaa", sans-serif;
+    font-family: var(--ash-font);
     display: block;
 }
 
@@ -853,12 +846,6 @@ a:hover .title span {
     color: rgba(var(--white-color), 1);
 }
 
-.l-top_menu-v2 .logo-container .logo {
-    background: url(https://image.ibb.co/cxV9kV/shiki-logo.png) no-repeat center;
-    height: 32px;
-    margin-top: 8px;
-}
-
 /* при наводке звезды */
 .b-rate .stars.hover {
     color: #e7a61d;
@@ -918,7 +905,7 @@ a:hover .title span {
     border-radius: 10px;
     background-color: rgba(var(--block-color), 0.4) !important;
     border: none !important;
-    font-family: "Comfortaa", sans-serif;
+    font-family: var(--ash-font);
     box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -938,7 +925,7 @@ a.start.b-button,
 .b-shiki_editor footer .hide {
     padding: 7px 12px;
     line-height: 1;
-    font-family: "Comfortaa", sans-serif;
+    font-family: var(--ash-font);
     color: rgba(var(--light-color), 1) !important;
     background-color: rgba(var(--block-color), 0.5);
     border-radius: 10px !important;
@@ -971,7 +958,7 @@ a.start.b-button:hover,
 .b-shiki_editor-v2 .hide {
     padding: 7px 12px;
     line-height: 1;
-    font-family: "Comfortaa", sans-serif;
+    font-family: var(--ash-font);
     color: rgba(var(--light-color), 1) !important;
     border-radius: 10px !important;
     transition: 0.3s ease-out, -webkit-0 .3s ease-out, width 0s, margin 0s, padding 0s, font-size 0s, height 0s, top 0s, left 0s, line-height 0s,
@@ -1081,7 +1068,7 @@ input {
     color: rgba(var(--light-color), 1);
     transition: 0.1s ease-out, -webkit-0 .1s ease-out, width 0s, margin 0s, padding 0s, font-size 0s, height 0s, top 0s, left 0s, line-height 0s,
     min-height 0s;
-    font-family: "Comfortaa", sans-serif;
+    font-family: var(--ash-font);
 }
 
 /* сводка по разным спискам  */
@@ -1308,7 +1295,7 @@ select,
 button,
 textarea {
     background-color: rgba(var(--block-color), 0.4);
-    font-family: "Comfortaa", sans-serif;
+    font-family: var(--ash-font);
     border: none !important;
 }
 
@@ -1920,7 +1907,7 @@ header.head .notice {
 }
 
 header.head a.misc {
-    font-family: "Comfortaa", sans-serif;
+    font-family: var(--ash-font);
     font-size: 12px !important;
     background: rgba(var(--block-color), 0.4);
     padding: 5px 50px;
@@ -3799,7 +3786,7 @@ body[data-locale=ru] .b-offtopic_marker:before, .b-anime_status_tag.offtopic:bef
 }
 
 .p-profiles header.head .misc span, .p-profiles header.head .misc a {
-    font-family: 'Comfortaa', sans-serif;
+    font-family: var(--ash-font);
 }
 
 .buttons > div {
@@ -5574,7 +5561,7 @@ body.p-achievements.p-profiles img {
     padding: 6px 10px 6px 10px;
     transition: 0.3s ease-out;
     border: none;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: var(--ash-font);
     box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -6633,7 +6620,7 @@ body.p-profiles .subheadline .misc-links > a:before {
     transition: 0.2s all;
     right: unset;
     letter-spacing: unset;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: var(--ash-font);
     bottom: unset;
 }
 
@@ -7167,7 +7154,7 @@ body.p-achievements.p-profiles .b-list_switchers > *:hover:after {
     border: none;
     text-decoration: none;
     color: rgba(var(--light-color), 1);
-    font-family: 'Comfortaa', sans-serif;
+    font-family: var(--ash-font);
     font-size: 8px;
     text-transform: uppercase;
     background: rgba(var(--hover-buttoms-2), 0.2);
@@ -7469,25 +7456,25 @@ body#profiles_edit .b-to-top .slide:before {
 }
 
 .b-collection-filters .b-block_list .filter.item-add:before {
-    font-family: "Comfortaa";
+    font-family: var(--ash-font);
     color: rgba(var(--dark-color), 1);
     border-radius: 10px;
     padding-right: 12px;
 }
 [data-locale="ru"] .b-collection-filters .b-block_list .filter.item-add:before {
-    font-family: "Comfortaa";
+    font-family: var(--ash-font);
     content: "исключить";
 }
 
 .b-collection-filters .b-block_list .filter.item-minus::before {
-    font-family: "Comfortaa";
+    font-family: var(--ash-font);
     color: rgba(var(--dark-color), 1);
     border-right: 3px solid #af3e0f;
     border-radius: 10px;
     padding-right: 9px;
 }
 [data-locale="ru"] .b-collection-filters .b-block_list .filter.item-minus::before {
-    font-family: "Comfortaa";
+    font-family: var(--ash-font);
     content: "добавить";
 }
 [data-locale="ru"] .b-collection-filters .b-block_list .filter.item-minus:hover:before,
@@ -8052,7 +8039,7 @@ c-videos .video-variant-group[data-kind="subtitles"] .video-kind.unknown:after {
     border-radius: 0px 19px 0px 16px;
     padding: 0px 11px 0px 14px;
     letter-spacing: 2px;
-    font-family: "Comfortaa";
+    font-family: var(--ash-font);
     box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -8070,7 +8057,7 @@ c-videos .video-variant-group[data-kind="subtitles"] .video-kind.unknown:after {
     border-radius: 0px 19px 0px 16px;
     padding: 0px 10px 0px 11px;
     letter-spacing: 2px;
-    font-family: "Comfortaa";
+    font-family: var(--ash-font);
     box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -9238,7 +9225,7 @@ body.p-achievements.p-profiles .b-to-top .slide:before {
 }
 
 body.p-achievements.p-profiles:after {
-    background-image: url(https://i.ibb.co/QX6hgbQ/image.png);
+    background-image: var(--ash-ach-bg);
     animation: none; filter: none;
 }
 body.p-achievements.p-profiles .l-page {
@@ -10431,7 +10418,7 @@ a.b-db_entry-variant-list_item .b-link:hover {
     padding: 0px;
     margin: 8px 10px 6px;
     font-size: 18px;
-    font-family: "Comfortaa";
+    font-family: var(--ash-font);
     color: #ffffff;
     background: rgba(var(--hover-color), 1);
     border-radius: 6px;
@@ -11502,19 +11489,19 @@ body.p-achievements.p-profiles .b-anime_status_tag.episode,
     .item-spoiler:after,
     .item-offtopic:before,
     .item-offtopic:after {
-        font-family: "Comfortaa", sans-serif;
+        font-family: var(--ash-font);
         color: rgba(var(--light-color), var(--hundred));
     }
 
     .item-offtopic:before,
     .item-offtopic:after {
-        font-family: "Comfortaa", sans-serif;
+        font-family: var(--ash-font);
         color: #e42964;
     }
 
     .item-summary:before,
     .item-summary:after {
-        font-family: "Comfortaa", sans-serif;
+        font-family: var(--ash-font);
         color: #54c762;
     }
 
@@ -11606,7 +11593,7 @@ body.p-achievements.p-profiles .b-anime_status_tag.episode,
         overflow: hidden;
         padding: 0 ;
         text-align: center;
-        font-family: "Comfortaa", sans-serif;
+        font-family: var(--ash-font);
         width: 45px;
         height: 45px;
         line-height: 45px;
@@ -18171,7 +18158,7 @@ div.Ssylki-anime:hover .Text-2 {
    ========================================================================== */
 
 body:after {
-  background-image: url(https://i.ibb.co/zbVdH6h/shiki-bg.jpg);
+  background-image: var(--ash-bg-image);
 }
 
 
@@ -18213,20 +18200,20 @@ body:after {
 }
 
 .l-top_menu-v2 .logo-container .logo {
-  background: url(https://i.ibb.co/cyysCr1/shiki-logo-white-07-06-22.png) no-repeat center !important;
+  background: var(--ash-logo) no-repeat center !important;
   height: 32px !important;
   margin-top: 0px !important;
 }
 
 .p-profiles .profile-head .c-brief header.head h1 {
-  font-family: 'Comfortaa', cursive !important;
+  font-family: var(--ash-font) !important;
   font-weight: 700 !important;
 }
 
 .header.head h2,
 header.head h1,
 header.head h2 {
-  font-family: 'Comfortaa', cursive !important;
+  font-family: var(--ash-font) !important;
   font-weight: 700 !important;
 }
 
@@ -18725,7 +18712,7 @@ body#profiles_show .l-page {
     height: 36px !important;
     line-height: 36px !important;
     text-align: center !important;
-    font-family: "Comfortaa", sans-serif !important;
+    font-family: var(--ash-font) !important;
     font-size: 14px !important;
     font-weight: 700 !important;
     color: rgba(var(--white-color), 1) !important;
@@ -18757,7 +18744,7 @@ body#profiles_show .l-page {
   /* --- Подписи и иконки ЛЕВОГО крыла («В планах» и «Играю») --- */
   .b-stats_bar.visual_novel .stat_name[data-type="planned"]:before {
     content: "В планах" !important;
-    font-family: "Comfortaa", sans-serif !important;
+    font-family: var(--ash-font) !important;
     font-size: 12px !important;
     line-height: 30px !important;
     width: 74px !important;
@@ -18787,7 +18774,7 @@ body#profiles_show .l-page {
   .b-stats_bar.visual_novel .stat_name[data-type="watching,rewatching"]:before,
   .b-stats_bar.visual_novel .bar .first:before {
     content: "Играю" !important;
-    font-family: "Comfortaa", sans-serif !important;
+    font-family: var(--ash-font) !important;
     font-size: 12px !important;
     line-height: 30px !important;
     width: 84px !important;
@@ -18841,7 +18828,7 @@ body#profiles_show .l-page {
   .b-stats_bar.visual_novel .stat_name[data-type="on_hold"]:after,
   .b-stats_bar.visual_novel .bar .second:after {
     content: "Отложено" !important;
-    font-family: "Comfortaa", sans-serif !important;
+    font-family: var(--ash-font) !important;
     font-size: 12px !important;
     line-height: 30px !important;
     width: 74px !important;
@@ -18876,7 +18863,7 @@ body#profiles_show .l-page {
 
   .b-stats_bar.visual_novel .bar .third:after {
     content: "Переигрываю" !important;
-    font-family: "Comfortaa", sans-serif !important;
+    font-family: var(--ash-font) !important;
     font-size: 11px !important;
     line-height: 30px !important;
     width: 84px !important;
@@ -19488,5 +19475,72 @@ form.rip_toggle_form input[type="checkbox"] {
   body.p-user_rates-index .l-content > .subheadline {
     box-sizing: border-box !important;
     padding-right: 64px !important;
+  }
+}
+
+
+/* ==========================================================================
+   [ПЕЧАТЬ]
+   Версия страницы для принтера: без фона, закреплённых панелей и свечений.
+   Проверяется через «Печать → Предпросмотр» в браузере.
+   ========================================================================== */
+
+@media print {
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  body:before,
+  body:after,
+  .l-top_menu-v2,
+  .l-footer,
+  .b-to-top,
+  .id-0,
+  .b-shiki_editor,
+  .b-menu-links,
+  .b-appear_marker,
+  .b-ajax {
+    display: none !important;
+  }
+
+  .l-page,
+  .b-container,
+  .b-wrapper,
+  .c-column,
+  .b-block,
+  .b-table,
+  .b-catalog_entry,
+  .b-comment,
+  .b-topic {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-color: #bbb !important;
+    color: #000 !important;
+  }
+
+  a, a:visited {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  .b-anime_status_tag,
+  .b-tag,
+  .b-user_rate,
+  .b-rate {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .b-catalog_entry,
+  .b-comment,
+  .c-column,
+  .b-topic {
+    break-inside: avoid;
   }
 }
