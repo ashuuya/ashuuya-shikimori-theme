@@ -2268,7 +2268,6 @@ code.b-code_inline {
 
 .b-bb_codes-examples .example .textarea {
     background: rgba(var(--block-color), 0.4);
-    border: rgba(var(--block-color), 0.4);
     color: rgba(var(--light-color), 1);
     border: none !important;
     border-radius: 8px;
@@ -2301,10 +2300,6 @@ code.b-code_inline {
     bottom: 0;
     border-radius: 8px 0 0 0 !important;
     right: 0;
-}
-
-.b-bb_codes-examples .result a:hover {
-    color: rgba(var(--hover-color), 1);
 }
 
 .b-bb_codes-examples .example span:after {
@@ -4504,10 +4499,6 @@ body#profiles_show .b-shiki_editor footer {
     opacity: 0.5;
 }
 
-:focus::-moz-placeholder {
-    opacity: 0.5;
-}
-
 :focus::-ms-input-placeholder {
     opacity: 0.5;
 }
@@ -5334,9 +5325,6 @@ body#profiles_show .b-topic > .editor-container {
 
 body#dialogs_show .b-topic > .editor-container {
     margin-top: 0;
-}
-
-.p-profiles .profile-head .c-brief {
 }
 
 .p-profiles .profile-head .c-brief header.head .misc {
@@ -7556,7 +7544,6 @@ input[type="checkbox"]:before {
     display: inline-block;
     content: "\f10c";
     color: rgba(var(--dark-color), 1);
-    display: inline-block;
     vertical-align: top;
     width: 10px;
     margin: -1px 18px 2px 2px;
@@ -7876,10 +7863,6 @@ body#dashboard_show .b-catalog_entry {
 
 .c-anime_video_episodes .b-video_variant:hover .episode-num {
     color: #d2d2d2;
-}
-
-.c-anime_video_episodes .b-show_more-more {
-    display: inline;
 }
 
 .c-anime_video_episodes .b-show_more,
@@ -8342,7 +8325,6 @@ video#main-video_html5_api .vjs-big-play-button {
 }
 
 .title .video-variant-switcher {
-    background: #000;
     padding: 3px 8px;
     border-radius: 14px;
     box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.1) !important;
@@ -8913,7 +8895,6 @@ div.compatibility > span.link-replacement > .text.full:before {
     justify-content: flex-end;
     float: none;
     border-radius: 8px;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
     transition: box-shadow 0.16s ease;
     width: calc(26% - 36px);
     margin: 0 12px 15px !important;
@@ -9381,7 +9362,6 @@ body.p-achievements.p-profiles .l-top_menu-v2 {
 }
 
 .cm-searching {
-    background-color: #ffa;
     background-color: rgba(169, 120, 17, 0.4);
 }
 
