@@ -22,7 +22,8 @@
      --ash-font          шрифт темы;
      --ash-logo          картинка логотипа в верхнем меню;
      --ash-bg-image      фон страницы;
-     --ash-ach-bg        фон раздела достижений.
+     --ash-ach-bg        фон раздела достижений;
+     --ash-density       плотность списков: 1 — как на сайте, 0.8 — компактнее.
 
    Закрепление верхнего меню настраивается самим сайтом в настройках профиля;
    тема поведение меню не переопределяет.
@@ -33,6 +34,7 @@ html:root {
   --ash-logo: url(https://i.ibb.co/cyysCr1/shiki-logo-white-07-06-22.png);
   --ash-bg-image: url(https://i.ibb.co/zbVdH6h/shiki-bg.jpg);
   --ash-ach-bg: url(https://i.ibb.co/QX6hgbQ/image.png);
+  --ash-density: 1;
 }
 
 
@@ -19528,6 +19530,30 @@ textarea:focus-visible,
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+
+/* ==========================================================================
+   [ПЛОТНОСТЬ]
+   --ash-density меньше 1 сжимает вертикальные отступы: между рядами карточек
+   и строками списков аниме и манги. Значение 1 оставляет оформление сайта
+   без изменений. Сколько карточек в ряду — решает сам сайт, тема это не
+   переопределяет.
+   ========================================================================== */
+
+html body .l-content .cc-entries .b-catalog_entry {
+  margin-bottom: calc(30px * var(--ash-density, 1)) !important;
+}
+
+tr.user_rate td,
+tr.user_rate td a,
+tr.user_rate td span {
+  line-height: calc(1.65 * 13px * var(--ash-density, 1)) !important;
+}
+
+tr.user_rate.selectable.editable:after {
+  height: calc(22px * var(--ash-density, 1));
+  padding-top: calc(2px * var(--ash-density, 1));
 }
 
 
