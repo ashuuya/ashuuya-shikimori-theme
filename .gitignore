@@ -4,5 +4,16 @@ AGENTS.md
 *.bak
 *.tmp
 *.old
+*.html
+*.htm
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.log
+*.sqlite
+*.sqlite3
+runs/
+snapshots/
 .DS_Store
 Thumbs.db
