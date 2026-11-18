@@ -1,1 +1,8 @@
 AGENTS.md
+*.zip
+*.7z
+*.bak
+*.tmp
+*.old
+.DS_Store
+Thumbs.db
