@@ -19480,6 +19480,63 @@ form.rip_toggle_form input[type="checkbox"] {
 
 
 /* ==========================================================================
+   [ЗАГЛУШКИ ДЛЯ ОБЛОЖЕК]
+   Пока картинка не загрузилась, на её месте мягко пульсирует подложка.
+   Пульсация затухает сама через три прохода и не тратит ресурсы постоянно.
+   ========================================================================== */
+
+@keyframes ash-cover-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.b-catalog_entry .image-cutter,
+.p-profiles .b-catalog_entry .image-cutter {
+  background-color: rgba(var(--block-color), 0.55);
+  background-image: linear-gradient(
+    100deg,
+    rgba(var(--block-color), 0) 20%,
+    rgba(var(--white-color), 0.12) 50%,
+    rgba(var(--block-color), 0) 80%
+  );
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  animation: ash-cover-shimmer 1.3s linear 3;
+}
+
+
+/* ==========================================================================
+   [ДОСТУПНОСТЬ]
+   Видимый фокус для клавиатуры и отключение движения для тех, кто его просил.
+   ========================================================================== */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid rgba(var(--hover-color), 1) !important;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ==========================================================================
    [ПЕЧАТЬ]
    Версия страницы для принтера: без фона, закреплённых панелей и свечений.
    Проверяется через «Печать → Предпросмотр» в браузере.
