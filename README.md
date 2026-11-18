@@ -40,7 +40,6 @@ html:root {
   --ash-logo: url("https://example.com/my-logo.png");
   --ash-bg-image: url("https://example.com/my-background.jpg");
   --ash-ach-bg: url("https://example.com/achievements.jpg");
-  --ash-nav-position: static;
 }
 ```
 
@@ -50,7 +49,6 @@ html:root {
 | `--ash-logo` | картинка логотипа в верхнем меню | логотип Shikimori RIP |
 | `--ash-bg-image` | фон страницы | фон темы |
 | `--ash-ach-bg` | фон раздела достижений | фон темы |
-| `--ash-nav-position` | `sticky` — меню закреплено при прокрутке, `static` — уезжает вместе со страницей | `sticky` |
 
 Если не указывать переменные вообще, тема выглядит так, как задумана: значения по умолчанию уже подставлены.
 

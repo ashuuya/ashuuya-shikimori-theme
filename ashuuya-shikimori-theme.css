@@ -22,9 +22,10 @@
      --ash-font          шрифт темы;
      --ash-logo          картинка логотипа в верхнем меню;
      --ash-bg-image      фон страницы;
-     --ash-ach-bg        фон раздела достижений;
-     --ash-nav-position  sticky — меню закреплено при прокрутке,
-                         static — меню уезжает вместе со страницей.
+     --ash-ach-bg        фон раздела достижений.
+
+   Закрепление верхнего меню настраивается самим сайтом в настройках профиля;
+   тема поведение меню не переопределяет.
    ========================================================================== */
 
 html:root {
@@ -32,7 +33,6 @@ html:root {
   --ash-logo: url(https://i.ibb.co/cyysCr1/shiki-logo-white-07-06-22.png);
   --ash-bg-image: url(https://i.ibb.co/zbVdH6h/shiki-bg.jpg);
   --ash-ach-bg: url(https://i.ibb.co/QX6hgbQ/image.png);
-  --ash-nav-position: sticky;
 }
 
 
@@ -105,11 +105,6 @@ body:after {
     -o-background-size: cover;
     background-size: cover;
     background-color: rgba(var(--menu-back), 0.5);
-}
-
-.l-top_menu-v2 {
-    position: var(--ash-nav-position, sticky);
-    top: 0;
 }
 
 .l-top_menu-v2 .active .submenu {
