@@ -61,7 +61,10 @@ def check_files(problems: list[str]) -> None:
 
 
 def check_text(problems: list[str]) -> None:
+    itself = Path(__file__).resolve()
     for path in tracked_files():
+        if path.resolve() == itself:
+            continue  # в самом скрипте перечислены шаблоны секретов — это не утечка
         if path.suffix.lower() not in {".css", ".md", ".txt", ".json", ".yml", ".yaml", ".py"}:
             continue
         try:
