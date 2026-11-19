@@ -30,10 +30,9 @@
      --ash-bg-image      фон страницы;
      --ash-ach-bg        фон раздела достижений;
      --ash-density       плотность списков: 1 — как на сайте, 0.8 — компактнее
-                         (экспериментально: на части страниц может не сработать).
-
-   Закрепление верхнего меню настраивается самим сайтом в настройках профиля;
-   тема поведение меню не переопределяет.
+                         (экспериментально: на части страниц может не сработать);
+     --ash-nav-position  relative — меню уезжает при прокрутке (по умолчанию),
+                         sticky — меню закреплено сверху.
    ========================================================================== */
 
 html:root {
@@ -42,6 +41,7 @@ html:root {
   --ash-bg-image: url(https://i.ibb.co/zbVdH6h/shiki-bg.jpg);
   --ash-ach-bg: url(https://i.ibb.co/QX6hgbQ/image.png);
   --ash-density: 1;
+  --ash-nav-position: relative;
 }
 
 
@@ -10472,6 +10472,9 @@ body.p-achievements.p-profiles a.b-db_entry-variant-list_item span.b-link {
     box-shadow: 0 1px 29px 10px rgba(var(--menu-back), 0.5);
     transition: 0.3s ease-in-out;
     border-bottom: unset;
+    /* Закрепление меню — по желанию: по умолчанию меню ведёт себя как на сайте. */
+    position: var(--ash-nav-position, relative);
+    top: 0;
 }
 
 .l-top_menu-v2 .menu-dropdown > span {
