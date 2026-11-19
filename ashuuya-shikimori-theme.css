@@ -63,14 +63,12 @@ body {
 
 @font-face {
     font-family: "FontAwesome";
-    src: url("/\x/maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0");
-    src: url("/\x/maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"),
-    url("/\x/maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"),
-    url("/\x/maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"),
-    url("/\x/maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"),
-    url("/\x/maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2") format("woff2"),
+    url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff") format("woff"),
+    url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 .css {
@@ -6693,26 +6691,27 @@ body.p-profiles .subheadline .misc-links > a:after {
 body.p-profiles .mass-actions .action a[href*='/read']:after {
     content: '\f2b6';
     font-size: 15px;
+    font-family: 'FontAwesome', sans-serif;
 }
 body.p-profiles .mass-actions .action a[href*='/dele']:after {
     content: '\f014';
     font-size: 18px;
+    font-family: 'FontAwesome', sans-serif;
 }
 .misc-links a[href*="/collections"]:after {
     content: '\f279';
     font-size: 15px;
+    font-family: 'FontAwesome', sans-serif;
 }
 .misc-links a[href*="/critiques"]:after {
     content: '\f27a';
     font-size: 15px;
+    font-family: 'FontAwesome', sans-serif;
 }
 .misc-links a[href*="/articles"]:after {
     content: '\f1ea';
     font-size: 15px;
-}
-a[href*="?order="]:after {
-    content: '\f0dc'!important;
-    font-size: 15px;
+    font-family: 'FontAwesome', sans-serif;
 }
 
 
