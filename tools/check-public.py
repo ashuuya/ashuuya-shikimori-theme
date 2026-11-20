@@ -62,6 +62,8 @@ def check_files(problems: list[str]) -> None:
 
 def check_text(problems: list[str]) -> None:
     itself = Path(__file__).resolve()
+    # data-URI шрифтов и картинок в CSS — это ресурсы темы, не секреты
+    data_uri = re.compile(r"data:(?:font|image)/[a-z0-9.+-]+;base64,[A-Za-z0-9+/=]+")
     for path in tracked_files():
         if path.resolve() == itself:
             continue  # в самом скрипте перечислены шаблоны секретов — это не утечка
@@ -72,6 +74,7 @@ def check_text(problems: list[str]) -> None:
         except UnicodeDecodeError:
             problems.append(f"не UTF-8: {path.relative_to(ROOT)}")
             continue
+        text = data_uri.sub("<data-uri>", text)
         for pattern in SECRET_PATTERNS:
             match = pattern.search(text)
             if match:
