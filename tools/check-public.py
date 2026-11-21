@@ -4,7 +4,7 @@
 Что проверяется:
   * состав файлов: только разрешённые типы, без AGENTS.md и без посторонних артефактов;
   * разметка CSS: баланс скобок, отсутствие @charset и активных @import;
-  * обязательные детали: экранированный селектор .de\\73 cription, отсутствие личных маркеров;
+  * обязательные детали: экранированный селектор .de\\73 cription, отсутствие локальных путей и аккаунтных селекторов;
   * токены: нет строк вида authenticity_token, csrf, sessionid, длинных base64;
   * если установлен tinycss2 — дополнительный разбор CSS на ошибки.
 
@@ -26,8 +26,9 @@ FORBIDDEN_EXT = {
     ".html", ".htm", ".png", ".jpg", ".jpeg", ".webp", ".gif",
     ".zip", ".7z", ".log", ".sqlite", ".sqlite3", ".db", ".pdf",
 }
-PERSONAL_MARKERS = [
-    "[removed]", "[removed]", "[removed]", "[removed]", "[removed]",
+PERSONAL_PATTERNS = [
+    re.compile(r"(?i)(?:file://|/home/|/data/Projects|\b[A-Za-z]:\\)"),
+    re.compile(r"(?i)[.#](?:user|profile|account)[_-]?\d{3,}\b"),
 ]
 SECRET_PATTERNS = [
     re.compile(r"authenticity_token", re.I),
@@ -76,7 +77,7 @@ def check_text(problems: list[str]) -> None:
             match = pattern.search(text)
             if match:
                 problems.append(
-                    f"похоже на секрет в {path.relative_to(ROOT)}: «{match.group(0)[:24]}…»"
+                    f"похоже на секрет в {path.relative_to(ROOT)}; значение скрыто"
                 )
 
 
@@ -93,9 +94,9 @@ def check_css(problems: list[str]) -> None:
         problems.append("в CSS есть активный @import")
     if ".de\\73 cription" not in text:
         problems.append("потерян экранированный селектор .de\\73 cription")
-    for marker in PERSONAL_MARKERS:
-        if marker in text:
-            problems.append(f"личный маркер в CSS: {marker}")
+    for pattern in PERSONAL_PATTERNS:
+        if pattern.search(text):
+            problems.append("личный или локальный маркер в CSS; значение скрыто")
     try:
         import tinycss2  # noqa: F401
     except ImportError:
